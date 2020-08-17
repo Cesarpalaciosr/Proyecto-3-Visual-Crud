@@ -1,0 +1,131 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 12.3
+-- Dumped by pg_dump version 12.3
+
+-- Started on 2020-08-15 23:48:09
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+DROP DATABASE "Base_Crud";
+--
+-- TOC entry 2823 (class 1262 OID 32811)
+-- Name: Base_Crud; Type: DATABASE; Schema: -; Owner: postgres
+--
+
+CREATE DATABASE "Base_Crud" WITH TEMPLATE = template0 ENCODING = 'UTF8' LC_COLLATE = 'Spanish_Spain.1252' LC_CTYPE = 'Spanish_Spain.1252';
+
+
+ALTER DATABASE "Base_Crud" OWNER TO postgres;
+
+\connect "Base_Crud"
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- TOC entry 203 (class 1259 OID 32825)
+-- Name: productos; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.productos (
+    id_producto integer NOT NULL,
+    codigo_product integer NOT NULL,
+    nombre character varying(20) NOT NULL,
+    precio integer NOT NULL,
+    stock integer NOT NULL
+);
+
+
+ALTER TABLE public.productos OWNER TO postgres;
+
+--
+-- TOC entry 202 (class 1259 OID 32823)
+-- Name: productos_id_producto_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.productos_id_producto_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.productos_id_producto_seq OWNER TO postgres;
+
+--
+-- TOC entry 2824 (class 0 OID 0)
+-- Dependencies: 202
+-- Name: productos_id_producto_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.productos_id_producto_seq OWNED BY public.productos.id_producto;
+
+
+--
+-- TOC entry 2687 (class 2604 OID 32828)
+-- Name: productos id_producto; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.productos ALTER COLUMN id_producto SET DEFAULT nextval('public.productos_id_producto_seq'::regclass);
+
+
+--
+-- TOC entry 2817 (class 0 OID 32825)
+-- Dependencies: 203
+-- Data for Name: productos; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.productos (id_producto, codigo_product, nombre, precio, stock) VALUES (2, 5551, 'carton de huevo', 12, 650000);
+INSERT INTO public.productos (id_producto, codigo_product, nombre, precio, stock) VALUES (3, 1234, 'Salsa de tomate', 45, 544440);
+
+
+--
+-- TOC entry 2825 (class 0 OID 0)
+-- Dependencies: 202
+-- Name: productos_id_producto_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.productos_id_producto_seq', 3, true);
+
+
+--
+-- TOC entry 2689 (class 2606 OID 32830)
+-- Name: productos productos_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.productos
+    ADD CONSTRAINT productos_pkey PRIMARY KEY (codigo_product);
+
+
+-- Completed on 2020-08-15 23:48:11
+
+--
+-- PostgreSQL database dump complete
+--
+
